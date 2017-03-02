@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui">
+
+	<h:head>
+		<title>User Management</title>
+		<meta name="author" content=""></meta>
+		<h:outputStylesheet library="css" name="style.css" />
+	</h:head>
+
+	<h:body style="padding-top: 50px; padding-bottom: 20px;">
+
+		<b:navBar brand="Users Service" brandHref="/home.xhtml" inverse="true" fixed="top">
+			<b:navbarLinks>
+				<b:dropMenu value="Users">
+					<b:navLink value="Registration" href="/registrazione.xhtml"></b:navLink>
+					<b:navLink value="List Users" href="/secure/listaUtenti.xhtml"></b:navLink>
+				</b:dropMenu>
+			</b:navbarLinks>
+	
+			<h:form styleClass="navbar-form navbar-right">
+				<div class="form-group">
+					<h:outputText fieldSize="sm" />
+				</div>
+	
+				<b:commandButton ajax="false" action="#{loginController.logoutPage}"
+					value="logout" look="success" icon="chevron-right" iconAlign="right" />
+			</h:form>
+	
+			<b:navbarLinks pull="right">
+				<b:navLink value="#{loginController.utenteConnesso}"
+					iconAwesome="fa-user" href="#"></b:navLink>
+			</b:navbarLinks>
+	
+		</b:navBar>
+
+		<ui:insert name="body">
+			<b:jumbotron>
+				<b:container>
+					<h1>Protected Page</h1>
+					<p>Only authorized users can view this page!</p>
+					<p>
+						Welcome User
+					</p>
+				</b:container>
+			</b:jumbotron>
+			<b:container>
+				<b:row>
+					<b:column col-md="4">
+						<h2>Heading</h2>
+						<p></p>
+						<p>
+							This is a test. 
+						</p>
+					</b:column>
+					<b:column col-md="4">
+						<h2>Heading</h2>
+						<p></p>
+						<p>
+							This is another test.
+						</p>
+					</b:column>
+					<b:column col-md="4">
+						<h2>Heading</h2>
+						<p></p>
+						<p>
+							This is yet another test.
+						</p>
+					</b:column>
+				</b:row>
+				<hr />
+				<footer>
+					<p></p>
+				</footer>
+			</b:container>
+		</ui:insert>
+
+		<ui:insert name="footer">
+			<b:container>
+				<hr />
+				<footer>
+					<p></p>
+				</footer>
+			</b:container>
+		</ui:insert>
+
+	</h:body>
+</html>

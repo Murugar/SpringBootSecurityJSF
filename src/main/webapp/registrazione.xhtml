@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:b="http://bootsfaces.net/ui"
+                template="/template/layoutPubblico.xhtml" >
+
+	<ui:define name="body">  
+		<b:container>
+			<h:form id="registrazione" role="form" class="form-horizontal">
+				<h3>Registration User:</h3>
+				<b:messages id="messaggio" showSummary="false" />
+									
+				<div class="form-group has-feedback has-feedback-left">
+					<label class=" col-sm-2 control-label">Username:(*)</label>
+					<div class="left-inner-addon col-sm-4">
+						<i class="icon-user glyphicon glyphicon-user"></i>
+						<p:inputText id="username" class="form-control"
+							placeholder="Username" required="true" requiredMessage="Username is Mandatory"
+							value="#{registrazioneController.registrazioneForm.username}">
+							<p:ajax event="blur"
+								listener="#{registrazioneController.verificaEsistenzaUsername()}"
+								update="registrazione:messaggio usernameMsg" />
+						</p:inputText>
+					</div>
+					<div class="col-sm-4">
+						<p:message id="usernameMsg" for="username" />
+					</div>
+				</div>
+				
+				<div class="form-group has-feedback has-feedback-left">
+					<label class=" col-sm-2 control-label">Password:(*)</label>
+					<div class="left-inner-addon col-sm-4">
+						<i class="icon-key glyphicon glyphicon-lock"></i>
+						<p:password id="password" class="form-control"
+							placeholder="Password" required="true" requiredMessage="Password Mandatory"
+							value="#{registrazioneController.registrazioneForm.password}">
+							<p:ajax event="blur"
+								update="registrazione:messaggio passwordMsg" />
+						</p:password>
+					</div>
+					<div class="col-sm-4">
+						<p:message id="passwordMsg" for="password" />
+					</div>
+				</div>
+				
+				<div class="form-group has-feedback has-feedback-left">
+					<label class=" col-sm-2 control-label">Repeat password:(*)</label>
+					<div class="left-inner-addon col-sm-4">
+						<i class="icon-key glyphicon glyphicon-lock"></i>
+						<p:password id="repassword" class="form-control" 
+							placeholder="Confirm password" required="true" requiredMessage="Password Mandatory"
+							value="#{registrazioneController.registrazioneForm.repassword}">
+							<p:ajax event="blur"
+								listener="#{registrazioneController.verificaRipetizionePassword()}"
+								update="registrazione:messaggio repasswordMsg" />
+						</p:password>
+					</div>
+					<div class="col-sm-4">
+						<p:message id="repasswordMsg" for="repassword" />
+					</div>
+				</div>
+			
+				<div class="form-group has-feedback has-feedback-left">
+					<label class=" col-sm-2 control-label">Email(*):</label>
+					<div class="left-inner-addon col-sm-4">
+						<i class="icon-key glyphicon glyphicon-envelope"></i>
+						<p:inputText id="email" class="form-control"
+							placeholder="Email" required="true" requiredMessage="email mandatory"
+							value="#{registrazioneController.registrazioneForm.email}">
+							<p:ajax event="blur"
+								listener="#{registrazioneController.verificaMail()}"
+								update="registrazione:messaggio emailMsg" />
+						</p:inputText>
+					</div>
+					<div class="col-sm-4">
+						<p:message id="emailMsg" for="email" />
+					</div>
+				</div>
+		
+				<br/>
+	
+				<div class="form-group">
+	            	<div class="col-sm-offset-2 col-xs-10">
+						<h:outputText value="(*) Mandatory" />
+					</div>
+				</div>
+				
+				<br/>
+				
+				<div class="form-group">
+	            	<div class="col-sm-offset-2 col-xs-10">
+						<b:commandButton ajax="true" update="registrazione" size="lg"
+							value="Register User" id="cb" action="#{registrazioneController.registraUtente}"
+							look="primary" />
+					</div>
+				</div>
+				
+			</h:form>
+		</b:container>	
+	</ui:define>
+</ui:composition>

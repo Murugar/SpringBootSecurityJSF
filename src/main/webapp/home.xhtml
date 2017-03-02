@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:sec="http://www.springframework.org/security/tags"
+                template="/template/layoutPubblico.xhtml">
+
+	<ui:define name="body">  
+		 <b:container>
+            <b:jumbotron>
+                <h1>User Management</h1>
+                <p>Spring Boot, Spring Security, Spring Data JPA and JSF</p>
+             
+                <p>
+                	<a href="login.xhtml" class="btn btn-lg btn-info">Sign In</a>
+                    <a href="registrazione.xhtml" class="btn btn-lg btn-info">Sign Up</a>
+                </p>
+            </b:jumbotron>
+        </b:container>
+	</ui:define>
+</ui:composition>

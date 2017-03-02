@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui" xmlns:b="http://bootsfaces.net/ui"
+	template="/template/layoutPrivato.xhtml">
+
+	<ui:define name="body">
+		<b:container>
+			<h2>List Users</h2>
+			<br/>
+			<b:dataTable value="#{listUserController.listaUtenti}" var="utente" id="lista"
+				styleClass="table table-striped table-bordered" style="width:100%">
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Id" />
+					</f:facet>
+					<h:outputText value="#{utente.id}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Username" />
+					</f:facet>
+					<h:outputText value="#{utente.username}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Email" />
+					</f:facet>
+					<h:outputText value="#{utente.email}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Created Date" />
+					</f:facet>
+					<h:outputText value="#{utente.dataCreazione}">
+						<f:convertDateTime type="date" pattern="dd-MM-yyyy HH:mm:ss"/>
+					</h:outputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="Role" />
+					</f:facet>
+					<h:outputText value="#{utente.role}" />
+				</h:column>
+			</b:dataTable>
+		</b:container>
+	</ui:define>
+</ui:composition>

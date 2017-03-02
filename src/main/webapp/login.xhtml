@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:b="http://bootsfaces.net/ui"
+                template="/template/layoutPubblico.xhtml" >
+
+	<ui:define name="body">  
+		<b:container>
+			<h:form id="login" role="form" class="form-horizontal" prependId="false">
+				<h3>Login:</h3>
+				
+				 <ui:fragment rendered="${!empty param['error']}">
+				 	<div class="alert alert-danger" role="alert">
+				 		Error authentication: username or password error
+				 	</div>
+            	</ui:fragment>
+				
+				<b:messages id="messaggio" />
+									
+				<div class="form-group has-feedback has-feedback-left">
+					<label class=" col-sm-2 control-label">Username:</label>
+					<div class="left-inner-addon col-sm-4">
+						<i class="icon-user glyphicon glyphicon-user"></i>
+						<p:inputText id="username" class="form-control"
+							placeholder="Username"
+							value="#{loginController.username}">
+						</p:inputText>
+					</div>
+					<div class="col-sm-4">
+						<p:message id="usernameMsg" for="username" />
+					</div>
+				</div>
+				
+				<div class="form-group has-feedback has-feedback-left">
+					<label class=" col-sm-2 control-label">Password:</label>
+					<div class="left-inner-addon col-sm-4">
+						<i class="icon-key glyphicon glyphicon-lock"></i>
+						<p:password id="password" class="form-control"
+							placeholder="Password"
+							value="#{loginController.password}">
+						</p:password>
+					</div>
+					<div class="col-sm-4">
+						<p:message for="password" />
+					</div>
+				</div>
+				
+				<br/>
+				
+				<div class="form-group">
+	            	<div class="col-sm-offset-2 col-xs-10">
+	            		<button type="submit" class="btn btn-primary btn-lg">Login</button>	
+					</div>
+				</div>
+				
+			</h:form>
+		</b:container>	
+	</ui:define>
+</ui:composition>
